@@ -293,3 +293,6 @@ In this way navigating through data will be cheap (no need to retrieve the _ENTI
 | }                            |
 +------------------------------+
 ```
+
+**Idea:** It could be that we dont need the size of the links to have binary search of links,
+if links are stored with a prefix, e.g. `_`, so they are always at the top, then if we know the size of the CBOR object, then, we can do binary search.
