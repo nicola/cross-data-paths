@@ -29,7 +29,7 @@ WIP Hierarchical pathing scheme to traverse in and across merkle trees - merkle 
   name: "Adam"
 }
 
-/_hash_/friends/0/name
+// /_hash_/friends/0/name
 "Adam"
 
 ```
@@ -42,7 +42,7 @@ WIP Hierarchical pathing scheme to traverse in and across merkle trees - merkle 
   "name": "Nicola",
   "surname": Link({@link: _hash3_})
   "friends": [Link({
-    @link: _hash3_
+    @link: _hash2_
   })]
 }
 
