@@ -272,6 +272,19 @@ Cyclic graphs can be created using relative paths
 
 In this example, link points to some data, however we want the `/name` given that origin
 
+## Multilinks
+Equivalent property of the magnet uris (that tell where to go and find the content)
+
+{
+  name: MultiLink({
+    @link:[
+      HTTPLink({ @link: "http://example.com/users/92") }, // these are ordered by priority
+      MerkleLink({ @link: "_hash2_"),
+    ]
+  })
+}
+
+
 ## Implementation note
 
 `MerkleLink` in the example describe the fact that that branch of the object should be treated differently
