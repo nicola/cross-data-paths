@@ -6,8 +6,8 @@ WIP Hierarchical pathing scheme to traverse in and across merkle trees - merkle 
 
 ### Without hash/merkle links
 
-```
-_hash_
+```javascript
+// _hash_
 {
   "name": "Nicola",
   "friends": [{
@@ -16,15 +16,15 @@ _hash_
 }
 
 
-/_hash_/name
+// /_hash_/name
 "Nicola"
 
-/_hash_/friends
+// /_hash_/friends
 [{
   name: "Adam"
 }]
 
-/_hash_/friends/0
+// /_hash_/friends/0
 {
   name: "Adam"
 }
@@ -36,8 +36,8 @@ _hash_
 
 ### With hash links
 
-```
-_hash1_
+```javascript
+// _hash1_
 {
   "name": "Nicola",
   "surname": Link({@link: _hash3_})
@@ -46,35 +46,35 @@ _hash1_
   })]
 }
 
-_hash2_
+// _hash2_
 {
   name: "Adam"
 }
 
-_hash3_
+// _hash3_
 "Greco"
 
-/_hash1_/surname
+// /_hash1_/surname
 "Greco"
 
-/_hash1_/friends
+// /_hash1_/friends
 [Link({
   @link: _hash2_
 })]
 
-/_hash1_/friends/0
+// /_hash1_/friends/0
 {
   name: "Adam"
 }
 
-/_hash1_/friends/0/name
+// /_hash1_/friends/0/name
 "Adam"
 ```
 
 ### With data about the link
 
-```
-_hash1_
+```javascript
+// _hash1_
 {
   "name": "Nicola",
   "friends": [Link({
@@ -83,36 +83,36 @@ _hash1_
   })]
 }
 
-_hash2_
+// _hash2_
 {
   name: "Adam"
 }
 
-/_hash1_/friends
+// /_hash1_/friends
 [Link({
   @link: _hash_2,
   nickname: "yala"
 })]
 
-/_hash1_/friends/0
+// /_hash1_/friends/0
 {
   name: "Adam"
 }
 
-/_hash1_/friends/0/name
+// /_hash1_/friends/0/name
 "Adam"
 
-/_hash1_/friends/0/nickname
+// /_hash1_/friends/0/nickname
 undefined
 
-/_hash1_/friends/0#nickname
+// /_hash1_/friends/0#nickname
 "yala"
 ```
 
 ### With merkle links
 
-```
-_hash1_
+```javascript
+// _hash1_
 {
   name: /_hash3_/name
   friends: [
@@ -122,7 +122,7 @@ _hash1_
   ]
 }
 
-_hash2_
+// _hash2_
 {
   name: {
     first: /_hash3_/name,
@@ -130,21 +130,21 @@ _hash2_
   }
 }
 
-_hash3_
+// _hash3_
 {
   name: "Nicola"
 }
 
-/_hash1_/name
+// /_hash1_/name
 "Nicola"
 
-/_hash1_/friends/0
+// /_hash1_/friends/0
 {
   first: "Nicola",
   family: "Greco"
 }
 
-/_hash1_/friends/0/first
+// /_hash1_/friends/0/first
 "Nicola"
 
 ```
@@ -153,8 +153,8 @@ _hash3_
 
 Cyclic graphs can be created using relative paths
 
-```
-_hash1_
+```javascript
+// _hash1_
 {
   name: "Nicola",
   surname: Link(@link: "./passport/officialSurname")
@@ -164,26 +164,26 @@ _hash1_
   }
 }
 
-/_hash1_/name
+// /_hash1_/name
 "Nicola"
 
-/_hash1_/surname
+// /_hash1_/surname
 "Greco"
 
-/_hash1_/passport
+// /_hash1_/passport
 {
   officialName: Link(@link: "../name"),
   officialSurname: "Greco"
 }
 
-/_hash1_/passport/officialName
+// /_hash1_/passport/officialName
 "Nicola"
 ```
 
 ### Cycles in merkle graphs
 
-```
-_hash1_
+```javascript
+// _hash1_
 {
   nicola: {
     name: "Nicola"
@@ -195,40 +195,40 @@ _hash1_
   }
 }
 
-_hash2_
+// _hash2_
 {
   nicola: _hash3_,
   lucia: _hash4_
 }
 
-_hash3_
+// _hash3_
 {
   name: "Lucia"
   brother: Link({@link: "../lucia"})
 }
 
-_hash4_
+// _hash4_
 {
   name: "Nicola"
   sister: Link({@link: "../nicola"})
 }
 
-/_hash1_/nicola/sister/name
+// /_hash1_/nicola/sister/name
 {
   name: "Lucia"
 }
 
-/_hash1_/nicola/sister/brother/name
+// /_hash1_/nicola/sister/brother/name
 {
   name: "Nicola"
 }
 
-/_hash2_/nicola/sister/name
+// /_hash2_/nicola/sister/name
 {
   name: "Lucia"
 }
 
-/_hash2_/nicola/sister/brother/name
+// /_hash2_/nicola/sister/brother/name
 {
   name: "Nicola"
 }
