@@ -2,6 +2,10 @@
 
 WIP Hierarchical pathing scheme to traverse in and across merkle trees - merkle dags. (eventually IPLD)
 
+## Note
+
+After a great talk with some students at MIT, I realized that this scheme is not just valid for Merkle trees, but for any type of structures. It is a way to link across data (like the Linked Data model). If we edit `MerkleLink` to `HTTPLink`, then we can link data via the web, instead.
+
 ## Pathing examples
 
 ### Without hash/merkle links
@@ -40,8 +44,8 @@ WIP Hierarchical pathing scheme to traverse in and across merkle trees - merkle 
 // _hash1_
 {
   "name": "Nicola",
-  "surname": Link({@link: _hash3_})
-  "friends": [Link({
+  "surname": MerkleLink({@link: _hash3_})
+  "friends": [MerkleLink({
     @link: _hash2_
   })]
 }
@@ -58,7 +62,7 @@ WIP Hierarchical pathing scheme to traverse in and across merkle trees - merkle 
 "Greco"
 
 // /_hash1_/friends
-[Link({
+[MerkleLink({
   @link: _hash2_
 })]
 
@@ -77,7 +81,7 @@ WIP Hierarchical pathing scheme to traverse in and across merkle trees - merkle 
 // _hash1_
 {
   "name": "Nicola",
-  "friends": [Link({
+  "friends": [MerkleLink({
     @link: _hash_2,
     nickname: "yala"
   })]
@@ -89,7 +93,7 @@ WIP Hierarchical pathing scheme to traverse in and across merkle trees - merkle 
 }
 
 // /_hash1_/friends
-[Link({
+[MerkleLink({
   @link: _hash_2,
   nickname: "yala"
 })]
@@ -116,7 +120,7 @@ undefined
 {
   name: /_hash3_/name
   friends: [
-    Link({
+    MerkleLink({
       @link: /_hash2_/name
     })
   ]
@@ -157,9 +161,9 @@ Cyclic graphs can be created using relative paths
 // _hash1_
 {
   name: "Nicola",
-  surname: Link(@link: "./passport/officialSurname")
+  surname: MerkleLink(@link: "./passport/officialSurname")
   passport: {
-    officialName: Link(@link: "../name"),
+    officialName: MerkleLink(@link: "../name"),
     officialSurname: "Greco"
   }
 }
@@ -172,7 +176,7 @@ Cyclic graphs can be created using relative paths
 
 // /_hash1_/passport
 {
-  officialName: Link(@link: "../name"),
+  officialName: MerkleLink(@link: "../name"),
   officialSurname: "Greco"
 }
 
@@ -187,11 +191,11 @@ Cyclic graphs can be created using relative paths
 {
   nicola: {
     name: "Nicola"
-    sister: Link({@link: "../nicola"})
+    sister: MerkleLink({@link: "../nicola"})
   },
   lucia: {
     name: "Lucia"
-    brother: Link({@link: "../lucia"})
+    brother: MerkleLink({@link: "../lucia"})
   }
 }
 
@@ -204,13 +208,13 @@ Cyclic graphs can be created using relative paths
 // _hash3_
 {
   name: "Lucia"
-  brother: Link({@link: "../lucia"})
+  brother: MerkleLink({@link: "../lucia"})
 }
 
 // _hash4_
 {
   name: "Nicola"
-  sister: Link({@link: "../nicola"})
+  sister: MerkleLink({@link: "../nicola"})
 }
 
 // /_hash1_/nicola/sister/name
@@ -238,7 +242,7 @@ Cyclic graphs can be created using relative paths
 
 ## Implementation note
 
-`Link` in the example describe the fact that that branch of the object should be treated differently
+`MerkleLink` in the example describe the fact that that branch of the object should be treated differently
 
 Example implementations:
 - In CBOR, it can just be a tag
