@@ -13,9 +13,16 @@ was: _Hierarchical pathing scheme to traverse in and across merkle trees - merkl
 
 After a great talk with some students at MIT, I realized that this scheme is not just valid for Merkle trees, but for any type of structures. It is a way to link across data (like the Linked Data model), and follow the link with the same path. If we edit `MerkleLink` to `HTTPLink`, then we can link data via the web, instead.
 
+## Goals
+Beyond the goals (and including the goals) of IPLD
+
+- Nice pathing schemes (be consistent /friends/0/name whether these are local or remote data)
+- Support multiple types of followable origin urn, including urls, merkle links
+- Be nice to JSON
+- Efficient encoded representation when possible
+
 ## Pathing examples
 
-In these examples, I show how to use 
 
 ### Without hash/merkle links
 
