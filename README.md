@@ -249,6 +249,29 @@ Cyclic graphs can be created using relative paths
 
 ## Mutable paths!
 
+### Non-merkle example (http)
+
+```
+// _hash3_
+{
+  name: HTTPLink({@link: "http://example.com/users/92", @path: "/name"})
+  // or name: HTTPLink({@origin: "http://example.com/users/92", @link: "./name"})
+  // or name: HTTPLink({@link: "http://example.com/users/92#me"})
+  surname: "Greco"
+}
+
+// http://example.com/users/92
+{
+  name: "Nicola",
+  ..
+}
+
+// /_hash3_/name
+"Nicola"
+```
+
+In this example, link points to some data, however we want the `/name` given that origin
+
 ## Implementation note
 
 `MerkleLink` in the example describe the fact that that branch of the object should be treated differently
