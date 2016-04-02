@@ -282,6 +282,7 @@ In this example, link points to some data, however we want the `/name` given tha
 ## Multilinks
 Equivalent property of the magnet uris (that tell where to go and find the content)
 
+```javascript
 {
   name: MultiLink({
     @link:[
@@ -290,6 +291,7 @@ Equivalent property of the magnet uris (that tell where to go and find the conte
     ]
   })
 }
+```
 
 
 ## Implementation note
