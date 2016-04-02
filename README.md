@@ -264,6 +264,8 @@ In this way navigating through data will be cheap (no need to retrieve the _ENTI
   }]
 }
 +------------------------------+
+| Links: 2                     |
++------------------------------+
 | ./friends/0/name: hash1/name |
 | ./name: hash2                |
 +------------------------------+
@@ -273,6 +275,8 @@ In this way navigating through data will be cheap (no need to retrieve the _ENTI
 
 // or, in other words
 
++------------------------------+
+| Links: 2                     |
 +------------------------------+
 | {                            |
 |   friends: [{                |
@@ -288,3 +292,4 @@ In this way navigating through data will be cheap (no need to retrieve the _ENTI
 |  }]                          |
 | }                            |
 +------------------------------+
+```
