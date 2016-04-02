@@ -1,4 +1,4 @@
-# data-pointers
+# interplanetary-paths
 
 > (was data-pointers, merkle-paths, could-be ipld)
 
