@@ -251,7 +251,7 @@ Cyclic graphs can be created using relative paths
 
 ### Non-merkle example (http)
 
-```
+```javascript
 // _hash3_
 {
   name: HTTPLink({@link: "http://example.com/users/92", @path: "/name"})
