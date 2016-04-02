@@ -1,5 +1,7 @@
 # data-pointers (was merkle-paths, could-be ipld)
 
+__WARNING__: A lot is happening, spec can change in the next few hours.
+
 Hierarchical path scheme that traverses in and across objects (or datasets).
 It extends JSON Pointers to support (1) any type of stuctured data, (2) links across data spaces keeping the same origin path.
 
