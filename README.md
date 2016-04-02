@@ -248,3 +248,43 @@ Example implementations:
 - In CBOR, it can just be a tag
 - In JavaScript, one could just check if the property is an object and contains `@link` inside
 
+
+### Efficient encoding
+
+It may be a good idea to store the data in the following way: list the links before the data.
+In this way navigating through data will be cheap (no need to retrieve the _ENTIRE_ content, one should just do a binary search in the links (if the number of the links is stored at the top of the entry), otherwise linear)
+
+```
+{
+  name: hash2,
+  surname: "Greco"
+  friends: [{
+    name: MerkleLink(hash1/name),
+    surname: "Yala
+  }]
+}
++------------------------------+
+| ./friends/0/name: hash1/name |
+| ./name: hash2                |
++------------------------------+
+| surname: "Nicola"            |
+| friends/0/surname: "Yala"    |
++------------------------------+
+
+// or, in other words
+
++------------------------------+
+| {                            |
+|   friends: [{                |
+|     name: hash1/name         |
+|   }],                        |
+|   name: hash2                |
+| }                            |
++------------------------------+
+| {                            |
+|  surname: "Greco"            |
+|  friends: [{                 |
+|    surname: "Yala"           |
+|  }]                          |
+| }                            |
++------------------------------+
