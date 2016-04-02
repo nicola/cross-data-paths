@@ -1,4 +1,6 @@
-# data-pointers (was merkle-paths, could-be ipld)
+# data-pointers
+
+> (was data-pointers, merkle-paths, could-be ipld)
 
 __WARNING__: A lot is happening, spec can change in the next few hours.
 
