@@ -1,12 +1,17 @@
-# merkle-paths
+# data-pointers (was merkle-paths, could-be ipld)
 
-WIP Hierarchical pathing scheme to traverse in and across merkle trees - merkle dags. (eventually IPLD)
+Hierarchical path scheme that traverses in and across objects (or datasets).
+It extends JSON Pointers to support (1) any type of stuctured data, (2) links across data spaces keeping the same origin path.
+
+was: _Hierarchical pathing scheme to traverse in and across merkle trees - merkle dags. (eventually IPLD)_
 
 ## Note
 
-After a great talk with some students at MIT, I realized that this scheme is not just valid for Merkle trees, but for any type of structures. It is a way to link across data (like the Linked Data model). If we edit `MerkleLink` to `HTTPLink`, then we can link data via the web, instead.
+After a great talk with some students at MIT, I realized that this scheme is not just valid for Merkle trees, but for any type of structures. It is a way to link across data (like the Linked Data model), and follow the link with the same path. If we edit `MerkleLink` to `HTTPLink`, then we can link data via the web, instead.
 
 ## Pathing examples
+
+In these examples, I show how to use 
 
 ### Without hash/merkle links
 
