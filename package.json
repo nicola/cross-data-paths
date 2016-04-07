@@ -1,0 +1,32 @@
+{
+  "name": "merkle-paths",
+  "version": "0.1.0",
+  "description": "Path system that follow the links across Merkle trees",
+  "main": "index.js",
+  "scripts": {
+    "test": "standard && node test/resolve.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nicola/interplanetary-paths"
+  },
+  "keywords": [
+    "merkle",
+    "merkle",
+    "tree",
+    "ipld"
+  ],
+  "author": "Nicola Greco <me@nicola.io> (http://nicolagreco.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nicola/interplanetary-paths/issues"
+  },
+  "homepage": "https://github.com/nicola/interplanetary-paths",
+  "dependencies": {
+    "jsonpointer": "^3.0.0"
+  },
+  "devDependencies": {
+    "standard": "^6.0.8",
+    "tape": "^4.5.1"
+  }
+}
