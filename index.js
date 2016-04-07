@@ -8,6 +8,9 @@ const base58 = require('bs58')
 const jsonpointer = require('jsonpointer')
 const path = require('path')
 
+// ATTENTION: the current implementation suffers of
+// https://en.wikipedia.org/wiki/Merkle_tree#Second_preimage_attack
+
 function hash (obj) {
   if (typeof obj === 'object') {
     obj = JSON.stringify(obj)
