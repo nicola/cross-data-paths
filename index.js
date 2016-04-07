@@ -1,9 +1,21 @@
 'use strict'
 
 exports.resolve = resolve
+exports.hash = hash
 
+const multihashing = require('multihashing')
+const base58 = require('bs58')
 const jsonpointer = require('jsonpointer')
 const path = require('path')
+
+function hash (obj) {
+  if (typeof obj === 'object') {
+    obj = JSON.stringify(obj)
+  }
+  var buf = new Buffer(obj)
+  return '/' + base58.encode(multihashing(buf, 'sha2-256'))
+}
+console.log(hash({test: 'hi'}))
 
 /**
  * Split an absolute or relative path in two [hash, path]

@@ -23,7 +23,10 @@
   },
   "homepage": "https://github.com/nicola/interplanetary-paths",
   "dependencies": {
-    "jsonpointer": "^3.0.0"
+    "bs58": "^3.0.0",
+    "jsonpointer": "^3.0.0",
+    "multihashes": "^0.2.0",
+    "multihashing": "^0.2.0"
   },
   "devDependencies": {
     "standard": "^6.0.8",
